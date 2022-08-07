@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Filme {
@@ -18,6 +19,17 @@ public class Filme {
 	private String genero;
 	private Integer ano;
 	
+	@ManyToOne
+	private Autor autor;
+	
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
 	public Filme() {}
 	
 	public Filme(String nome, String genero, Integer ano) {
