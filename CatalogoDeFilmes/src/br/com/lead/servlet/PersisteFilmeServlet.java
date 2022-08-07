@@ -3,8 +3,6 @@ package br.com.lead.servlet;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -12,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 import br.com.lead.modelo.Filme;
+import br.com.lead.util.JPAUtil;
 
 @SuppressWarnings("serial")
 @WebServlet("/persistir-filme")
@@ -25,17 +24,13 @@ public class PersisteFilmeServlet extends HttpServlet {
 		
 		Filme filme = new Filme(nome, genero, ano);
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("catalogodefilmes");
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 		
 		em.getTransaction().begin();;
 		em.persist(filme);
 		em.getTransaction().commit();
 		
 		em.close();
-		emf.close();
-		
-		
 	}
 
 }
