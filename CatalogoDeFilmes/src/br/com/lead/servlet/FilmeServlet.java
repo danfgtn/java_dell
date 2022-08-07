@@ -2,8 +2,6 @@ package br.com.lead.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
